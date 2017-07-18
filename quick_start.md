@@ -56,11 +56,11 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 MariaDB [(none)]> 
 ...
 
-CREATE DATABASE pgscm;
-GRANT ALL PRIVILEGES ON pgscm.* TO 'root'@'localhost' \
+CREATE DATABASE pgscm_dev;
+GRANT ALL PRIVILEGES ON pgscm_dev.* TO 'pgs'@'localhost' \
   IDENTIFIED BY 'pgscm';
 
-GRANT ALL PRIVILEGES ON pgscm.* TO 'root'@'%' \
+GRANT ALL PRIVILEGES ON pgscm_dev.* TO 'pgs'@'%' \
   IDENTIFIED BY 'pgscm';
 exit
 
@@ -75,7 +75,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
 ...
     SQLALCHEMY_DATABASE_URI = \
-        'mysql+pymysql://root:pgscm@localhost:3306/pgscm'
+        'mysql+pymysql://pgs:pgscm@localhost:3306/pgscm_dev'
 ```
 
 - Populate the pgscm database

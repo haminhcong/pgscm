@@ -21,6 +21,7 @@ class Config:
     PGS_ADMIN = os.environ.get('PGS_ADMIN')
 
     # i18n
+    MULTILANGUAGE_LANGS = ['en', 'vi']
     BABEL_DEFAULT_LOCALE = 'vi'
     BABEL_DEFAULT_TIMEZONE = 'ICT'
 
@@ -31,28 +32,22 @@ class Config:
     SECURITY_URL_PREFIX = '/auth'
     SECURITY_SEND_REGISTER_EMAIL = False
 
-    @staticmethod
-    def init_app(app):
-        pass
-
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-    #     'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
     SQLALCHEMY_DATABASE_URI = \
-        'mysql+pymysql://root:pgscm@localhost:3306/pgscm'
+        'mysql+pymysql://pgs:pgscm@localhost:3306/pgscm_dev'
 
 
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or \
-                              'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
+    SQLALCHEMY_DATABASE_URI = \
+        'mysql+pymysql://root@localhost:3306/pgscm_test'
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-                              'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+    SQLALCHEMY_DATABASE_URI = \
+        'mysql+pymysql://pgs:pgscm@localhost:3306/pgscm'
 
 
 config = {
