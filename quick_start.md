@@ -43,7 +43,7 @@ $ sudo docker run --name myadmin -d --link mariadb_pgscm:db -p 8080:80 phpmyadmi
 - Access **mariadb_pgscm** container and create **pgscm** databases with password is **pgscm**
 
 ```bash
-$ sudo  docker exec -it mariadbtest bash
+$ sudo  docker exec -it mariadb_pgscm bash
 root@container_id:/# mysql -uroot -ppgscm
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 9
