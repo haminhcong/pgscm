@@ -1,0 +1,66 @@
+<div class="form-horizontal">
+    {#    <div class="row form-group">#}
+    <div class="row form-group">
+
+        <!-- box-header-left -->
+        <div id="box-header-left">
+            <label class="control-label entries-select-label"
+                   for="entries_per_page"
+                   style="padding-right: 3px;padding-left: 3px">
+                Show Entries:
+            </label>
+            <div class="entries-select-input">
+                <select id="entries_per_page" class="form-control">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+        </div>
+        <!-- /.box-header-left -->
+
+        <!-- box-header-right -->
+        <div class="table_actions clearfix" id="box-header-right">
+            <div class="table_search client">
+                <div class="form-group has-feedback">
+                    <input class="form-control" value=""
+                           name="table_filter" placeholder="Filter"
+                           id="table_filter"
+                           type="text">
+                    <span class="fa fa-search search-icon form-control-feedback"></span>
+                </div>
+            </div>
+
+
+            <div class="dt-buttons btn-group">
+                <button id="advance-search-certificate-btn"
+                        class="btn data-table-action btn-default ajax-modal"
+                        title="Advance Search Certificate"><span
+                        class="fa  fa-search-plus"></span>Search
+                </button>
+                <a class="btn btn-default buttons-excel buttons-html5"
+                   tabindex="0" aria-controls="pgs_users" href="#"
+                   title="Excel">
+                    <span><i class="fa fa-file-excel-o"></i></span>
+                </a>
+                <a class="btn btn-default buttons-pdf buttons-html5"
+                   tabindex="0" aria-controls="pgs_users" href="#"
+                   title="PDF">
+                    <span><i class="fa fa-file-pdf-o"></i></span>
+                </a>
+                <a class="btn btn-default buttons-print" tabindex="0"
+                   aria-controls="pgs_users" href="#" title="Print">
+                    <span><i class="fa fa-print"></i></span>
+                </a>
+            </div>
+
+        </div>
+        <!-- /.box-header-right -->
+
+    </div>
+</div>
+
+
+
+

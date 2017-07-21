@@ -1,0 +1,62 @@
+<table id="pgs_certificates"
+       class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>{{ _('Certificate ID') }}</th>
+        <th>{{ _('Certificate Name') }}</th>
+        <th>{{ _('Owner Group') }}</th>
+        <th>{{ _('Active Date') }}</th>
+        <th>{{ _('Status') }}</th>
+        <th>{{ _('Actions') }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for certificate in certificates %}
+        <tr>
+            <td>
+                <a href="{{ lurl_for('certificate.details',
+                                                        certificate_id=certificate.certificate_id) }}">
+                    {{ certificate.certificate_id }}
+                </a>
+            </td>
+            <td>{{ certificate.certificate_name }}</td>
+            <td>{{ certificate.owner_group }}</td>
+            <td>{{ certificate.active_date }}</td>
+            <td>{{ certificate.status }}</td>
+            <td class="actions_column">
+                <div class="btn-group">
+                    <a class="btn table-action-default btn-default btn-sm ajax-modal">
+                        View Certificate Details
+                    </a>
+                    <a class="btn btn-default btn-sm dropdown-toggle"
+                       data-toggle="dropdown" href="#"
+                       aria-expanded="false">
+                        <span class="fa fa-caret-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right row_actions">
+                        <li>
+                            <a class="btn table-action-default ajax-modal">
+                                Edit Certificate
+                            </a>
+                            <a class="btn table-action-danger ajax-modal">
+                                Delete Certificate
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>{{ _('Certificate ID') }}</th>
+        <th>{{ _('Certificate Name') }}</th>
+        <th>{{ _('Owner Group') }}</th>
+        <th>{{ _('Active Date') }}</th>
+        <th>{{ _('Status') }}</th>
+        {#                            <th>{{ _('Actions') }}</th>#}
+    </tr>
+    </tfoot>
+</table>
