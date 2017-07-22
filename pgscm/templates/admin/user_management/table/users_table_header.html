@@ -7,7 +7,7 @@
             <label class="control-label entries-select-label"
                    for="entries_per_page"
                    style="padding-right: 3px;padding-left: 3px">
-                Show Entries:
+                {{ _('Show Entries') }}
             </label>
             <div class="entries-select-input">
                 <select id="entries_per_page" class="form-control">
@@ -32,48 +32,33 @@
                 </div>
             </div>
 
-
             <div class="dt-buttons btn-group">
                 <button id="advance-search-certificate-btn"
                         class="btn data-table-action btn-default ajax-modal"
-                        title="Advance Search Certificate"><span
-                        class="fa  fa-search-plus"></span>Search
+                        title="Advance Search Certificate">
+                    <span class="fa fa-search-plus"></span> {{ _('Search') }}
                 </button>
-                <button id="create-certificate-btn"
-                        class="btn btn-default"
-                        title="Create New Certificate"><span
-                        class="fa fa-plus"></span>
-                    Create...
+                <button type="button"
+                        id="create-new-user-btn"
+                        data-api-current-user-roles={{ url_for('api.current_user_roles') }}
+                                data-toggle="modal"
+                        data-target="#create-user-form-modal"
+                        class="btn btn-primary"
+                        title="{{ _('Create New Certificate...') }}">
+                    <span class="fa fa-plus"></span> {{ _('Create...') }}
                 </button>
                 <button id="delete-certificates-btn"
                         class="btn-danger btn disabled"
                         name="action"
-                        title="Delete Selected Certificates"
+                        title="{{ _('Delete Selected Certificates') }}"
                         type="submit" value="keypairs__delete">
-                    <span class="fa fa-trash"></span>Delete...
+                    <span class="fa fa-trash"></span> {{ _('Delete...') }}
                 </button>
-                <a class="btn btn-default buttons-excel buttons-html5"
-                   tabindex="0" aria-controls="pgs_users" href="#"
-                   title="Excel">
-                    <span><i class="fa fa-file-excel-o"></i></span>
-                </a>
-                <a class="btn btn-default buttons-pdf buttons-html5"
-                   tabindex="0" aria-controls="pgs_users" href="#"
-                   title="PDF">
-                    <span><i class="fa fa-file-pdf-o"></i></span>
-                </a>
-                <a class="btn btn-default buttons-print" tabindex="0"
-                   aria-controls="pgs_users" href="#" title="Print">
-                    <span><i class="fa fa-print"></i></span>
-                </a>
             </div>
-
         </div>
         <!-- /.box-header-right -->
-
     </div>
 </div>
-
 
 
 

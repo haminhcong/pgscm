@@ -1,32 +1,30 @@
 from flask import Flask, request, g, url_for
 from flask_bootstrap import Bootstrap
-from flask_login import LoginManager
 from flask_mail import Mail
 from flask_moment import Moment
 from flask_potion import Api
 from flask_security import Security, SQLAlchemyUserDatastore, \
     utils as security_utils
-from flask_sqlalchemy import SQLAlchemy
 from flask_security import user_registered
 from flask_babelex import Babel
 from adminlte import AdminLTE
 from config import config
 import uuid
-
+from pgscm.db.models import sqla
+from pgscm.db.models import login_manager
 from pgscm.security import forms
 
 # Blueprint
 from pgscm.admin import admin as admin_blueprint
 from pgscm.certificate import certificate as certificate_blueprint
 from pgscm.main import main as main_blueprint
+from pgscm.api import api as api_blueprint
 
 bootstrap = Bootstrap()
 mail = Mail()
 moment = Moment()
-sqla = SQLAlchemy()
 babel = Babel()
 
-login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'security.login'
 
@@ -34,7 +32,7 @@ from pgscm.db.models import User, Role  # noqa
 
 user_datastore = SQLAlchemyUserDatastore(sqla, User, Role)
 sec = Security()
-api = Api()
+api = Api(prefix='/api')
 
 
 def register_extensions(app):
@@ -67,6 +65,7 @@ def register_blueprint(app):
     app.register_blueprint(main_blueprint)
     app.register_blueprint(admin_blueprint)
     app.register_blueprint(certificate_blueprint)
+    app.register_blueprint(api_blueprint)
 
 
 def create_app(config_name):

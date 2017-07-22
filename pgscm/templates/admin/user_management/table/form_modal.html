@@ -1,0 +1,94 @@
+<!-- Modal for create new user button -->
+<div class="modal fade" id="create-user-form-modal" tabindex="-1" role="dialog"
+     aria-labelledby="CreateUserFormLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;
+                </button>
+                <h4 class="modal-title" id="create-user-form-label">
+                    {{ _('Create New User') }}
+                </h4>
+            </div>
+
+            <form id="user-create-form" class="form-horizontal" method="post"
+                  action="#">
+                {{ create_user_form.hidden_tag() }}
+                <div class="modal-body">
+
+                    <div class="form-group has-error">
+                        {{ create_user_form.user_name.label(class="control-label col-sm-4",for="user-name") }}
+                        <div class="col-sm-8">
+                            {{ create_user_form.user_name(class="form-control",placeholder=_("Enter user name")) }}
+                            <div class="help-block with-errors"
+                                 style="display: none">Must enter your name?
+                            </div>
+                            {#                            <div class="alert alert-error">#}
+                            {#                                123123#}
+                            {#                            {{ form[field].label }}: {{ ', '.join(errors) }}#}
+                            {#                            </div>#}
+                        </div>
+
+                        {#                        {% if create_user_form.user_name.errors %}#}
+                        {#                            <div class="has-error">  {{ field.label }} {{ field(size=80, class_='form-control') }}</div>#}
+                        {#                            <span style="color: red;">{% for error in field.errors %}#}
+                        {#                                {{ error }}{% if not loop.last %}<br/>#}
+                        {#                                {% endif %}{% endfor %}</span>#}
+                        {#                        {% else %}#}
+                        {#                            {{ field.label }}#}
+                        {#                            {{ field(size=80, class_='form-control') }}#}
+                        {#                       {% endif %}#}
+                    </div>
+                    <div class="form-group">
+                        {{ create_user_form.email.label(class="control-label col-sm-4",for="email") }}
+
+                        <div class="col-sm-8">
+                            {{ create_user_form.email(class="form-control",placeholder=_("Enter user email")) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ create_user_form.password.label(class="control-label col-sm-4",for="password") }}
+
+                        <div class="col-sm-8">
+                            {{ create_user_form.password(class="form-control",placeholder=_("Enter user password")) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ create_user_form.retype_password.label(class="control-label col-sm-4",for="retype_password") }}
+
+                        <div class="col-sm-8">
+                            {{ create_user_form.retype_password(class="form-control",placeholder=_("Retype user password")) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ create_user_form.role_id.label(class="control-label col-sm-4",for="role_id") }}
+
+                        <div class="col-sm-8">
+                            {{ create_user_form.role_id(class="form-control") }}
+                        </div>
+                    </div>
+                    {% if 'national_admin' in current_user.roles or 'national_moderator' in current_user.roles %}
+                        <div class="form-group" style="display: none">
+                            {{ create_user_form.region_id.label(class="control-label col-sm-4",for="region_id") }}
+                            <div class="col-sm-8">
+                                {{ create_user_form.region_id(class="form-control") }}
+                            </div>
+                        </div>
+                    {% elif current_user.is_authenticated and ('national_user' in current_user.roles) %}
+
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">Close
+                    </button>
+                    <button type="button" id="send-user-create-form" class="btn btn-primary">Create User
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End of Modal for Edit button -->
+

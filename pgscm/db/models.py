@@ -1,7 +1,11 @@
 from flask_security import UserMixin, RoleMixin
-from pgscm import sqla, login_manager
+from flask_sqlalchemy import SQLAlchemy
 import enum
 import uuid
+from flask_login import LoginManager
+
+login_manager = LoginManager()
+sqla = SQLAlchemy()
 
 
 class GenderType(enum.Enum):

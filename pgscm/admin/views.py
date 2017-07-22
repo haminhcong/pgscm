@@ -8,13 +8,13 @@ from flask_security import roles_accepted
 @roles_accepted('national_admin', 'regional_admin')
 def index():
     return render_template('admin/index.html')
-
-
-@admin.route('/vi/quan-tri/nguoi-dung', endpoint='users_vi')
-@admin.route('/en/admin/users', endpoint='users_en')
-@roles_accepted('national_admin', 'regional_admin')
-def users():
-    return render_template('admin/index.html')
+#
+#
+# @admin.route('/vi/quan-tri/nguoi-dung', endpoint='users_vi')
+# @admin.route('/en/admin/users', endpoint='users_en')
+# @roles_accepted('national_admin', 'regional_admin')
+# def users():
+#     return render_template('admin/index.html')
 
 
 @admin.route('/vi/quan-tri/cau-hinh', endpoint='configs_vi')

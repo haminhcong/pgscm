@@ -14,6 +14,10 @@
 
 {% block skin %}skin-green{% endblock %}
 {% block navbar %}
+    <!-- Block message-->
+    <!-- End block message-->
+
+
     <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">{{ _('Toggle navigation') }}</span>
@@ -45,7 +49,9 @@
                                         </div>
                                         <h4>
                                             Message title
-                                            <small><i class="fa fa-clock-o"></i> 5
+                                            <small><i
+                                                    class="fa fa-clock-o"></i>
+                                                5
                                                 mins
                                             </small>
                                         </h4>
@@ -54,7 +60,8 @@
                                 </li><!-- end message -->
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">See All Messages</a></li>
+                        <li class="footer"><a href="#">See All Messages</a>
+                        </li>
                     </ul>
                 </li>
                 <!-- Notifications: style can be found in dropdown.less -->
@@ -71,8 +78,8 @@
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-warning danger"></i>
-                                        Certificate 2017.BT-01 mid-term audit due
-                                        date!
+                                        Certificate 2017.BT-01 mid-term audit
+                                        due date!
                                     </a>
                                 </li>
                                 <li>
@@ -92,19 +99,22 @@
                         <i class="fa fa-globe"></i>
                         <span class="label label-danger">{{ g.language }}</span>
                     </a>
-                    <ul class="dropdown-menu" style="width: 140px;height: 120px;">
+                    <ul class="dropdown-menu"
+                        style="width: 140px;height: 120px;">
                         <li class="header">{{ _('Change the language.') }}</li>
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
                                 <li>
-                                    <a href="{{ url_for(request.endpoint[:-2] + 'vi') }}">
+                                    <a href="{{ url_for(request.endpoint[:-2] + 'vi',
+                                                            **request.view_args) }}">
                                         <i class="fa fa-circle"></i>
                                         {{ _('Vietnamese') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url_for(request.endpoint[:-2] + 'en') }}">
+                                    <a href="{{ url_for(request.endpoint[:-2] + 'en',
+                                                            **request.view_args) }}">
                                         <i class="fa fa-circle"></i>
                                         {{ _('English') }}
                                     </a>
@@ -185,14 +195,16 @@
         <li class="header">{{ _('PGS MANAGEMENT') }}</li>
         <li class="{{ is_active_in_tree(request, 'main') }}">
             <a href="{{ lurl_for('main.index') }}">
-                <i class="fa fa-dashboard"></i> <span>{{ _('Dashboard') }}</span>
+                <i class="fa fa-dashboard"></i>
+                <span>{{ _('Dashboard') }}</span>
             </a>
         </li>
         {% if current_user.is_authenticated and ('national_admin' in current_user.roles or
         'national_moderator' in current_user.roles) %}
             <li class="{{ is_active_in_tree(request, 'certificate') }}">
                 <a href="{{ lurl_for('certificate.index') }}">
-                    <i class="fa fa-balance-scale"></i> <span>{{ _('Certificate') }}</span>
+                    <i class="fa fa-balance-scale"></i>
+                    <span>{{ _('Certificate') }}</span>
                 </a>
             </li>
 
@@ -209,7 +221,8 @@
 
             <li class="{{ is_active_in_tree(request, 'associate_group') }}">
                 <a href="#">
-                    <i class="fa fa-home"></i> <span>{{ _('Associated Group') }}</span>
+                    <i class="fa fa-home"></i>
+                    <span>{{ _('Associated Group') }}</span>
                 </a>
             </li>
             {% if 'national_admin' in current_user.roles %}
@@ -245,7 +258,8 @@
         {% elif current_user.is_authenticated and ('user' in current_user.roles) %}
             <li class="{{ is_active_in_tree(request, 'certificate') }}">
                 <a href="{{ lurl_for('certificate.index') }}">
-                    <i class="fa fa-balance-scale"></i> <span>{{ _('Certificate') }}</span>
+                    <i class="fa fa-balance-scale"></i>
+                    <span>{{ _('Certificate') }}</span>
                 </a>
             </li>
 
@@ -262,7 +276,8 @@
 
             <li class="{{ is_active_in_tree(request, 'associate_group') }}">
                 <a href="#">
-                    <i class="fa fa-home"></i> <span>{{ _('Associated Group') }}</span>
+                    <i class="fa fa-home"></i>
+                    <span>{{ _('Associated Group') }}</span>
                 </a>
             </li>
         {% endif %}
@@ -276,7 +291,8 @@
             </li>
             <li class="treeview">
                 <a href="{{ url_for_security('register') }}">
-                    <i class="fa fa-user-plus"></i> <span>{{ _('Register') }}</span>
+                    <i class="fa fa-user-plus"></i>
+                    <span>{{ _('Register') }}</span>
                 </a>
             </li>
         {% endif %}
@@ -290,7 +306,8 @@
         <small>{{ _('Summary report about PGS status') }}</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>{{ _(' Home') }}</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>{{ _(' Home') }}</a>
+        </li>
         <li class="active">{{ _('Dashboard') }}</li>
     </ol>
 {%- endblock content_header %}

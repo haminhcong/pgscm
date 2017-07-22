@@ -2,31 +2,52 @@
        class="table table-bordered table-hover">
     <thead>
     <tr>
-        <th>{{ _('Certificate ID') }}</th>
-        <th>{{ _('Certificate Name') }}</th>
-        <th>{{ _('Owner Group') }}</th>
-        <th>{{ _('Active Date') }}</th>
-        <th>{{ _('Status') }}</th>
+        <th><input type="checkbox" class="users-table-check-all"></th>
+        <th>{{ _('User ID') }}</th>
+        <th>{{ _('User Name') }}</th>
+        <th>{{ _('Email') }}</th>
+        <th>{{ _('Roles') }}</th>
+        <th>{{ _('Region') }}</th>
         <th>{{ _('Actions') }}</th>
     </tr>
     </thead>
     <tbody>
-    {% for certificate in certificates %}
+    {% for user in users %}
         <tr>
             <td>
-                <a href="{{ lurl_for('certificate.details',
-                                                        certificate_id=certificate.certificate_id) }}">
-                    {{ certificate.certificate_id }}
-                </a>
+                <input type="checkbox" class="users-table-check-box"
+                       data-user-id="{{ user.id }}">
             </td>
-            <td>{{ certificate.certificate_name }}</td>
-            <td>{{ certificate.owner_group }}</td>
-            <td>{{ certificate.active_date }}</td>
-            <td>{{ certificate.status }}</td>
+            <td>
+                {#                <a href="{{ lurl_for('certificate.details',#}
+                {#                          certificate_id=certificate.certificate_id) }}">#}
+                {#                    {{ certificate.certificate_id }}#}
+                {#                </a>#}
+                {{ user.id }}
+            </td>
+            <td>{{ user.fullname }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                {% if user.roles|length==1 %}
+                    {{ user.roles[0].name }}
+                {% else %}
+                    {% for role in user.roles %}
+                        {{ role }},
+                    {% endfor %}
+
+                {% endif %}
+            </td>
+            <td>
+                {% if user.region != None %}
+                    {{ user.region }}
+                {% else %}
+                    {{ _('National') }}
+                {% endif %}
+            </td>
             <td class="actions_column">
                 <div class="btn-group">
                     <a class="btn table-action-default btn-default btn-sm ajax-modal">
-                        View Certificate Details
+                        Edit User Roles
                     </a>
                     <a class="btn btn-default btn-sm dropdown-toggle"
                        data-toggle="dropdown" href="#"
@@ -35,11 +56,8 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right row_actions">
                         <li>
-                            <a class="btn table-action-default ajax-modal">
-                                Edit Certificate
-                            </a>
                             <a class="btn table-action-danger ajax-modal">
-                                Delete Certificate
+                                Delete User
                             </a>
                         </li>
 
@@ -51,12 +69,16 @@
     </tbody>
     <tfoot>
     <tr>
-        <th>{{ _('Certificate ID') }}</th>
-        <th>{{ _('Certificate Name') }}</th>
-        <th>{{ _('Owner Group') }}</th>
-        <th>{{ _('Active Date') }}</th>
-        <th>{{ _('Status') }}</th>
+        <th><input type="checkbox" class="users-table-check-all"></th>
+        <th>{{ _('User ID') }}</th>
+        <th>{{ _('User Name') }}</th>
+        <th>{{ _('Email') }}</th>
+        <th>{{ _('Roles') }}</th>
+        <th>{{ _('Region') }}</th>
+        <th>{{ _('Actions') }}</th>
         {#                            <th>{{ _('Actions') }}</th>#}
     </tr>
     </tfoot>
 </table>
+
+
